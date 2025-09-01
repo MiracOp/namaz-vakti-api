@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class NamazVaktiService {
   // API URL'inizi buraya yazın (deploy ettikten sonra)
-  static const String baseUrl = 'https://your-api-domain.com'; // Değiştirilecek
+  static const String baseUrl = 'https://namaz-vakti-api-pied.vercel.app';
   
   // Namaz vakitlerini al
   static Future<Map<String, dynamic>?> getVakitler(String il, {String? tarih}) async {

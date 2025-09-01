@@ -35,11 +35,11 @@ function isValidTime(str){
 // İl -> (id, slug) eşleme (örnek; genişletilecek)
 const LOCATIONS = {
   'İstanbul': { id: 9541, slug: 'istanbul-icin-namaz-vakti' },
-  'Ankara': { id: 9206, slug: 'ankara' },
-  'İzmir': { id: 9206, slug: 'izmir' },
-  'Bursa': { id: 9206, slug: 'bursa' },
-  'Adana': { id: 9206, slug: 'adana' },
-  'Antalya': { id: 9206, slug: 'antalya' }
+  'Ankara': { id: 9206, slug: 'ankara-icin-namaz-vakti' },
+  'İzmir': { id: 9221, slug: 'izmir-icin-namaz-vakti' },
+  'Bursa': { id: 9335, slug: 'bursa-icin-namaz-vakti' },
+  'Adana': { id: 9158, slug: 'adana-icin-namaz-vakti' },
+  'Antalya': { id: 9225, slug: 'antalya-icin-namaz-vakti' }
   // Diğer iller buraya eklenecek
 };
 
@@ -199,6 +199,13 @@ app.get('/iller', (req, res) => {
     data: ILLER,
     count: ILLER.length
   });
+});
+
+// Cache temizleme endpoint'i (geliştirme amaçlı)
+app.get('/api/clear-cache', (req, res) => {
+  cache.clear();
+  console.log('[cache] Cache temizlendi');
+  res.json({ message: 'Cache temizlendi', timestamp: new Date().toISOString() });
 });
 
 // Health check endpoint
